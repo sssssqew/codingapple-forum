@@ -2,7 +2,7 @@ import { MongoClient, ServerApiVersion } from 'mongodb'
 
 const username = encodeURIComponent("sunrise");
 const password = encodeURIComponent("rkrrlska7496");
-const DB_URL = `mongodb+srv://${username}:${password}@cluster0.38tto.mongodb.net/?retryWrites=true&w=majority`
+const DB_URL = `mongodb+srv://${username}:${password}@cluster0.38tto.mongodb.net/forum?retryWrites=true&w=majority`
 
 const options = {
   serverApi: {
