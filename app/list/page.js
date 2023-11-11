@@ -1,5 +1,8 @@
 import connectDB from "@/util/database"
+import ListItem from "./ListItem"
 
+
+// DB 조회하는 컴포넌트는 서버 컴포넌트로 작성하기
 export default async function List(){
   const client = await connectDB
   const db = client.db('forum')
@@ -9,10 +12,7 @@ export default async function List(){
   return (
     <div className="list-bg">
       {result && result.map(post => (
-        <div className="list-item">
-        <h4>{post.title}</h4>
-          <p>1월 1일</p>
-        </div>
+        <ListItem key={post._id} post={JSON.stringify(post)}></ListItem>
       ))}
     </div>
   )
