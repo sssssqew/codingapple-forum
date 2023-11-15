@@ -19,7 +19,7 @@ export default async function handler(req, res){
         return res.status(400).json({ msg: '해당 사용자가 이미 존재합니다.' })
       }
       const result = await db.collection('user').insertOne({ name, email, hash })
-      res.redirect(302, '/')
+      return res.redirect(302, '/')
     }catch(error){
       return res.status(500).json({ msg: '회원가입 에러', error})
     }

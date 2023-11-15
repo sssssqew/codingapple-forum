@@ -23,7 +23,7 @@ export default async function handler(req, res){
         const result = await db.collection('post').insertOne({ title, content, author: session.user?.email })
         return res.redirect(302, '/list')
       }catch(error){
-        return res.status(500).json({ msg: 'DB 저장오류', error})
+        return res.status(500).json({ msg: 'DB 저장오류 - 포스트', error})
       }
     }
   }
