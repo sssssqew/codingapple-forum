@@ -39,7 +39,7 @@ export default function Comment({ parentId }){
       {commentsById.length === 0 ? 
       <p>댓글 가져오는 중...</p> :
        commentsById.map((comment => (
-        <p key={comment._id}>{comment.content}</p>
+        <p key={comment._id}>{comment.content} (작성자: { comment.author })</p>
       )))}
     </div>
   )
