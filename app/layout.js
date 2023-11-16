@@ -5,6 +5,8 @@ import LoginBtn from './LoginBtn'
 import LogoutBtn from './LogoutBtn'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
+import { cookies } from 'next/headers'
+import DarkMode from './DarkMode'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,9 +19,12 @@ export default async function RootLayout({ children }) {
   const session = await getServerSession(authOptions)
   console.log(session)
 
+  const result = cookies().get('mode')
+  console.log(result)
+
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={result?.value === 'dark' && 'dark-mode'}>
         <div className='navbar'>
           <Link href="/" className="logo">Sunrise 블로그</Link>
           <Link href="/list">글목록</Link>
@@ -31,7 +36,7 @@ export default async function RootLayout({ children }) {
               <h3 className='email'>{session?.user?.email}</h3>
             </>
           ) : <LoginBtn/>}
-          
+          <DarkMode/>
         </div>
         {children}
       </body>
